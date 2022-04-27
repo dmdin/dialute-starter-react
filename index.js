@@ -4,7 +4,8 @@ import {Dialute} from 'dialute';
 
 function* script(r) {
   while (true) {
-    yield 'Hello world from Dialute!';
+    yield 'Привет мир 1!';
+    yield 'Привет мир 2!';
   }
 }
 
