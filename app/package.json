@@ -1,0 +1,54 @@
+{
+  "type": "module",
+  "name": "dialute-app",
+  "description": "Dialute Starter Svelte - App part",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write ./src/**/*.{js,jsx,ts,tsx,css,md,json}"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@parcel/config-default": "^2.5.0",
+    "@parcel/core": "^2.5.0",
+    "@parcel/transformer-typescript-tsc": "^2.5.0",
+    "@parcel/validator-typescript": "^2.5.0",
+    "@salutejs/client": "^1.0.0",
+    "@sberdevices/assistant-client": "^5.0.2",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.0",
+    "dialute": "^0.0.24",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "nodemon": "^2.0.15",
+    "parcel": "^2.5.0",
+    "prettier": "^2.6.2",
+    "process": "^0.11.10",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "typescript": "^4.6.3"
+  }
+}
