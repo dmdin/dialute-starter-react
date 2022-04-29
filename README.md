@@ -23,5 +23,6 @@ $: npx degit dikower/dialute-starter-react
 
 ## 🥰 Support
 You can always click on the ⭐️ of the repo and donate. I will be very glad for any support
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/Dikower)
+<div style="text-align:center">
+  [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/Dikower)
+</div>
