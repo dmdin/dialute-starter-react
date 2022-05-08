@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as styles from "./App.module.css";
 import { useEffect, useMemo, useState } from "react";
 import { AssistantAppState, createSmartappDebugger, AssistantClient } from "@sberdevices/assistant-client";
