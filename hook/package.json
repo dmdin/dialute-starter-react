@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "nodemon --exec npx ts-node src/index.ts",
     "lint": "eslint .",
-    "format": "prettier --write ./src/**/*.{js,json,html,ts}"
+    "format": "prettier --write ./src/**/*"
   },
   "devDependencies": {
     "@types/node": "^15.14.9",

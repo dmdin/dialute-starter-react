@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -20,5 +21,6 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "react/react-in-jsx-scope": false
     }
 }

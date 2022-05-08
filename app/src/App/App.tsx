@@ -1,16 +1,18 @@
+import './App.css';
+import { useMemo, useState } from 'react';
+import { AssistantAppState, createSmartappDebugger } from '@sberdevices/assistant-client';
 // @ts-ignore
 import logo from '../logo.svg';
-import './App.css';
-import { useEffect, useMemo, useState } from 'react';
-import { AssistantAppState, createSmartappDebugger } from '@sberdevices/assistant-client';
+import { logger } from '../utils';
 
 const init = () => {
   function getState(): AssistantAppState {
-    console.log('State was get');
+    logger.log('State was get');
     return {};
   }
 
-  const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzNjk4NTAzMzgzMjViZmViZjg2ZGVjYjAzZDkzZjkwZDQ2ZmMxNmNmZGZiNTUyMDAzNGQxOTFkMWEwYTQ4NDQyNTM5YmU5MjcwMDQyNjI5OCIsImF1ZCI6IlZQUyIsImV4cCI6MTY1MTE0MjYyMCwiaWF0IjoxNjUxMDU2MjEwLCJpc3MiOiJLRVlNQVNURVIiLCJ0eXBlIjoiQmVhcmVyIiwianRpIjoiYjVjYThjZmEtNmVjMS00OGM2LWEwZGYtMjUwNzgxMDM0Y2IwIiwic2lkIjoiN2RmOGYzZmMtNWQwMy00NTlhLTgwNTAtMWFlYTczODQyMTg1In0.mE7S-ypsO6pvSsRp0I1hnTw7K88tu87ez5mM9cwViR1w4QXyL0h-5qlDVNCbYktqa8Vb2VqezRfeFvm4Nn8YHFItf7g54689n5WhfaeG28S2qdi0MjqE2LQ39kZGiyMoGEoj1kDrqOF6x_DP-Xl3EVM8MXgmXGTZW0aAdOym2yP41SJY2S3vTrfGYkazw1TbQIYr_bOnvWbu0WOD_Hwv1DM8wsbHa-3vdrg7Pi-3uRptyMS_iRr34AM5qDXdYACKk4tJSEk3wN058kR1fDJvA395nEEsqmPO-Z2FhJxaMMOne34MsgTHtK3jgFABNxGI-UsBeT1oGjKMzcUGj7mYzdH8YbkWe1RMkywNBjIO8UvD4T1HeR-ZKufzz2qgtKRXLM67f11Yw450c6lHvthNEkB-4p9nXpXQki6qJ0wHVpiamF3g_560XSvculfTFm598iLTGRJYY6PkpawfKUavtrp_bBDNwRPMDUaeAYnQT8uJvfCS598_Fvw-VWSVXYtlhzXCsnXnkXrQrN23DvHBJi3WbL9_sNQlcNGhyjSTYD6Bo5-xfun_NS-JNLp0x7BtOhhudhkeS6bRz04j7J23BBMMCSP87Q7Et_2R3-UdvEH8oUPiOdrVnKHnQoXi4mfMMCN70Axt1PqswpcE6HmTyHNh9ZA3KmdP3rHKeSVYJFw';
+  const token =
+    'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzNjk4NTAzMzgzMjViZmViZjg2ZGVjYjAzZDkzZjkwZDQ2ZmMxNmNmZGZiNTUyMDAzNGQxOTFkMWEwYTQ4NDQyNTM5YmU5MjcwMDQyNjI5OCIsImF1ZCI6IlZQUyIsImV4cCI6MTY1MjA5MTUyMywiaWF0IjoxNjUyMDA1MTEzLCJpc3MiOiJLRVlNQVNURVIiLCJ0eXBlIjoiQmVhcmVyIiwianRpIjoiNmM3ZmQ3NWQtMmQ5YS00MTBiLTlkNDQtZjc4YTVmMGE5ODFhIiwic2lkIjoiMTIyZmNkOTMtOGIzNS00ZWY3LWIwNWEtY2MzZWIxZDJiZTBiIn0.Y9AMQ0-9QFYeDpBJxZT4tk_lBVEfkSfHF6RXMLX6GNOkGQ1H7P1Wf7HmyjEeq5cB7AxmjzUR_FXXVvgu7Xgipa6wYE7O5W2bpxDIAYdgbMmjc8XySn5KpLLcsffBEfFCAqIvjfFE96kJp2LKW48maRutqUrONyQVSF6ULwD-_-pX5s14dCRanfME7DeREU2etH_6LE35H957dYAE8d0sJtWFG3P-f5KLcIKFojV8rorgbf6bOBGU_KfK0OxWgNEImF_2AuouEBf_wVhkaia9rD8Qw0l1OSuV74OwUn9G1i42NOABl_DZ_hQS5DTVhzlVPdojJcLvV08Z6eAFOQpSHVq0bEp1U97_FwczVJyi8q-_YdxlcF1R7ktbNs3XfFoW3vvQ0RkNsi-knx2rZc-fKR-FcJQhPb-AUZRIuctK6AADTf7dO4LocmN9vYAnCq9Mgtj54w9m2uBEWZBwVRcbLZhxmMR74MJDDuFkreVsg3Y3eSN20ePMMQrs-URTBIlRY2GFeNm0s_Hn_ZiQFigY3tyYv-AQZqHxgnCzz6netGoacbEBmj4Mmqa-c8AP18DbKsrsnfMGXJZzZ_zgvljr6DVbN3y3RKGPyhCaMfnnI7ycguHFOIW-ptLdsyr5P0DEAJVhKlVcsHG7qChJMMJlkDkjXEWgqbpoWlcZuPt2zZA';
   const initPhrase = 'запусти темлейт';
 
   // Use it for debugging in browser
@@ -28,7 +30,7 @@ function App() {
   const [character, setCharacter] = useState('eva');
 
   // useEffect(() => {
-  //   console.log('Used effect')
+  //   logger.log('Used effect')
   //   setAssistant(init());
   // }, []);
 
@@ -37,7 +39,7 @@ function App() {
       return;
     }
     assistant.on('start', () => {
-      console.log('SmartApp started');
+      logger.log('SmartApp started');
     });
     assistant.on('data', (event) => {
       // Set your action or data hooks
@@ -49,7 +51,7 @@ function App() {
       if (event.type === 'character') {
         setCharacter(event.character.id);
       }
-      console.log('Data', event);
+      logger.log('Data', event);
     });
   }, [assistant]);
 
