@@ -1,0 +1,41 @@
+html {
+    background: black;
+}
+
+.main {
+    text-align: center;
+    padding: 1em;
+    max-width: 240px;
+    margin: 0 auto;
+}
+
+.button {
+    background: #14c07c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.h1 {
+    color: #14c07c;
+    text-transform: uppercase;
+    font-size: 4em;
+    font-weight: 100;
+}
+
+.h2 {
+    color: #14c07c;
+    font-weight: 100;
+}
+
+.p {
+    color: #f4f4f4;
+}
+
+@media (min-width: 640px) {
+    .main {
+        max-width: none;
+    }
+}

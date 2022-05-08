@@ -7,7 +7,6 @@ function* script(r: SberRequest) {
 	rsp.msg = 'Hello world from Dialute!';
 	rsp.data = state;
 	rsp.kbrd = ['Button 1', 'Button 2'];
-
 	yield rsp;
 
 	while (true) {
@@ -25,5 +24,5 @@ function* script(r: SberRequest) {
 
 Dialute
 	.fromEntrypoint(script as GeneratorFunction)
-	.shareApp('../app/public')
+	.shareApp('../app/dist')
 	.start();
