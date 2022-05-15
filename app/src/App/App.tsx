@@ -78,7 +78,7 @@ function App() {
         Visit the <a href="https://developer.sberdevices.ru/">Sberdevices Docs</a>
         to learn how to build CanvasApps for Sber Salute.
       </p>
-      <p className={styles.p}>Dialute docs comming soon...</p>
+      <p>Read <a href="https://dialute.vercel.app/">Dialute docs</a> for more details about the framework</p>
     </main>
   );
 }

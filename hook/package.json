@@ -23,6 +23,6 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "dialute": "^0.0.25"
+    "dialute": "^0.0.28"
   }
 }
