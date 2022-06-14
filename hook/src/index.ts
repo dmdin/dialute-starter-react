@@ -24,5 +24,5 @@ function* script(r: SberRequest) {
 
 Dialute
 	.fromEntrypoint(script as GeneratorFunction)
-	.shareApp('../app/dist')
+	.shareApp('app/dist')
 	.start();
